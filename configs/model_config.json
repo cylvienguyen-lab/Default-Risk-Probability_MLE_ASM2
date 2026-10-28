@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "model_version": "credit_default_catboost_dev2023_refactor_v3",
+  "model_name": "CatBoost",
+  "parameters": {
+    "iterations": 200,
+    "depth": 6,
+    "random_seed": 88
+  },
+  "positive_class": 1,
+  "excluded_groups": [
+    "Clickstream"
+  ],
+  "excluded_columns": [
+    "unknown_loan_type_count",
+    "personal_loan_count",
+    "log_annual_income",
+    "log_total_emi_per_month",
+    "log_amount_invested_monthly",
+    "log_emi_to_monthly_salary_ratio"
+  ],
+  "numeric_values": "raw; preserve declared nullable NaN; reject infinities",
+  "categorical_values": "non-null strings; native CatBoost categories",
+  "selection_status": "frozen Development selection; do not retune on Test, OOT or inference",
+  "selection_evidence": "notebooks/model_development.ipynb; three expanding-window Development CV folds, Oct/Nov/Dec 2023; single CatBoost chosen over small ensemble gain"
+}

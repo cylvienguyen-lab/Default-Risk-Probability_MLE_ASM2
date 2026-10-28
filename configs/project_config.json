@@ -1,0 +1,40 @@
+{
+  "feature_config": "feature_config.json",
+  "model_config": "model_config.json",
+  "monitoring_config": "monitoring_config.json",
+  "paths": {
+    "attributes_source": "data/features_attributes.csv",
+    "financials_source": "data/features_financials.csv",
+    "clickstream_source": "data/feature_clickstream.csv",
+    "lms_source": "data/lms_loan_daily.csv",
+    "bronze_attributes": "datamart/bronze/attributes",
+    "bronze_financials": "datamart/bronze/financials",
+    "bronze_clickstream": "datamart/bronze/clickstream",
+    "bronze_lms": "datamart/bronze/lms",
+    "silver_attributes": "datamart/silver/attributes",
+    "silver_financials": "datamart/silver/financials",
+    "silver_clickstream": "datamart/silver/clickstream",
+    "silver_lms": "datamart/silver/loan_daily",
+    "gold_features": "datamart/gold/feature_store",
+    "gold_labels": "datamart/gold/label_store",
+    "predictions": "datamart/gold/model_predictions",
+    "model_bank": "model_bank",
+    "runs": "reports/runs",
+    "evaluation": "reports/evaluation",
+    "monitoring": "datamart/gold/model_monitoring",
+    "monitoring_reports": "reports/monitoring"
+  },
+  "target": {"label_def": "30dpd_6mob", "dpd_threshold": 30, "horizon_months": 6, "reporting_lag_months": 1, "positive_class": 1},
+  "splits": {
+    "development": ["2023-01-01", "2024-01-01"],
+    "test": ["2024-01-01", "2024-04-01"],
+    "oot": ["2024-04-01", "2024-07-01"],
+    "inference": ["2024-07-01", "2025-02-01"]
+  },
+  "development_cv_fit_dates": ["2023-10-01", "2023-11-01", "2023-12-01"],
+  "final_fit_as_of": "2024-07-01",
+  "source_coverage": {"applications": ["2023-01-01", "2025-02-01"], "clickstream": ["2023-01-01", "2025-01-01"], "outcomes": ["2023-01-01", "2025-08-01"]},
+  "policy": {"empty_application_snapshot": "error", "empty_raw_lms_snapshot": "error", "empty_mob6_label_snapshot": "allow_with_audit", "missing_clickstream_before_coverage_start": "allow", "missing_clickstream_within_coverage": "error", "bronze_csv_collect_to_driver": true, "max_bronze_rows": 1000000},
+  "runtime": {"spark_master": "local[2]", "spark_shuffle_partitions": 2, "log_level": "ERROR"},
+  "provenance_note": "CSV snapshot dates are not source publication timestamps; historical as-of dates are simulated."
+}

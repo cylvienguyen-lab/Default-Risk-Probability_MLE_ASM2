@@ -1,0 +1,18 @@
+{
+  "reference_version": "dev2023_features_oot2024_scores_v1",
+  "feature_reference": {
+    "population": "development",
+    "start": "2023-01-01",
+    "end_exclusive": "2024-01-01"
+  },
+  "score_reference": {
+    "population": "oot",
+    "start": "2024-04-01",
+    "end_exclusive": "2024-07-01"
+  },
+  "numeric_quantile_bins": 10,
+  "psi_smoothing_count": 0.5,
+  "minimum_stability_sample_size": 30,
+  "psi_review_threshold": 0.2,
+  "calibration_bins": 10
+}
